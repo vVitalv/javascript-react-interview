@@ -111,9 +111,13 @@ let func = (args) => expression
 
 </details> 
 
+<details><summary>Как работают события в JS</summary>
+
+</details> 
+
 #### React
 
-<details><summary>Какие есть методы жизненного цикла компонента в React</summary>
+<details><summary>Какие методы жизненного цикла компонента в React</summary>
 
 </details>
 
@@ -151,6 +155,10 @@ ReactDOM.createPortal(child, container)
 </details>
 
 #### HTML и CSS
+
+<details><summary>Для чего нужен `<!DOCTYPE>`</summary>
+
+</details>
 
 <details><summary>Как выровнять элемент по центру</summary>
 
