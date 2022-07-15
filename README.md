@@ -46,6 +46,27 @@
 
 </details>
 
+<details><summary>Как можно клонировать объект</summary>
+
+1. Использовать метод `Object.assign()`:
+```javascript
+const cloneObj = Object.assign({}, originObj)
+```
+2. Использовать `spread` оператор `...`:
+```javascript
+const cloneObj = {...originObj}
+```
+
+Но эти подходы не позволяют выполнить глубокое клонирование. Поэтому, если нужно клонировать объект со вложенными объектами, можно:
+
+3. Использовать метод какой-либо библиотеки, например `_.cloneDeep()` из JavaScript-библиотеки `lodash`
+4. Cделать это средствами встроенного объекта JSON:
+```javascript
+const cloneObj = JSON.parse(JSON.stringify(originObj))
+```
+
+</details>
+
 <details><summary>Различия между let, const и var</summary>
 
 Область видимости переменных, объявленных при помощи `var` может быть как *локальной*, так и *глобальной* и зависит от места их объявления. 
@@ -111,6 +132,10 @@ let func = (args) => expression
 
 </details> 
 
+<details><summary>Что такое замыкание</summary>
+
+</details>
+
 <details><summary>Как работают события в JS</summary>
 
 </details> 
@@ -118,6 +143,14 @@ let func = (args) => expression
 #### React
 
 <details><summary>Какие методы жизненного цикла компонента в React</summary>
+
+</details>
+
+<details><summary>Как можно управлять состоянием компонентов</summary>
+
+</details>
+
+<details><summary>Как работает Redux</summary>
 
 </details>
 
@@ -129,11 +162,19 @@ let func = (args) => expression
 
 </details>
 
-<details><summary>Как работает хук useEffect</summary>
+<details><summary>Как работает хук useEffect и чем отличается от useLayoutEffect</summary>
 
 </details>
 
-<details><summary>Что такое мемоизация</summary>
+<details><summary>Как работает хук useRef</summary>
+
+</details>
+
+<details><summary>Что такое мемоизация и как реализуется в React</summary>
+
+</details>
+
+<details><summary>Как работают хуки useCallback, useMemo</summary>
 
 </details>
 
