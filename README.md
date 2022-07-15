@@ -102,6 +102,25 @@ const cloneObj = JSON.parse(JSON.stringify(originObj))
 
 </details>
 
+<details><summary>Для чего нужен двойной оператор логического отрицания !!</summary>
+
+Двойной восклицательный знак позволяет конвертировать любое выражение в логическое значение.
+Если выражение, с точки зрения JS, истинно — после обработки его двойным восклицательным знаком будет возвращено `true`. В противном случае будет возвращено `false`.
+```javascript
+!!null            // false
+!!undefined       // false
+!!false           // false
+!!true            // true
+!!""              // false
+!!"string"        // true
+!!0               // false
+!!1               // true
+!!{}              // true
+!![]              // true
+```
+
+</details>
+
 <details><summary>Что такое область видимости (Scope)</summary
 
 **Область видимости** (`scope`) — это место, откуда мы имеем доступ к переменным или функциям. В JS есть три типа областей видимости: *глобальная*, *функциональная* и *блочная*.
@@ -270,6 +289,8 @@ elem.addEventListener(event, callback, true)
 </details>
 
 <details><summary>Что такое HOC</summary>
+
+**Компонент высшего порядка** (*Higher-Order Component*) — это функция, которая принимает компонент и возвращает новый компонент.
 
 </details>
 
