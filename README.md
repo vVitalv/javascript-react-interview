@@ -271,9 +271,32 @@ elem.addEventListener(event, callback, true)
 
 <details><summary>Как работает хук useState</summary>
 
+`useState` используется чтобы наделить функциональный компонент внутренним состоянием. React будет хранить это состояние между рендерами.
+
+Хук `useState` возвращает новый *state* и функцию для его обновления.
+```javascript
+const [state, setState] = useState(initialState)
+```
+В качестве аргумента `useState` принимает первоначальное значение *стейта*, которое будет применено при первом рендеринге.
+
+[Подробнее](https://ru.reactjs.org/docs/hooks-state.html)
+
 </details>
 
 <details><summary>Как работает хук useEffect и чем отличается от useLayoutEffect</summary>
+
+`useEffect` позволяет выполнять побочные эффекты (загрузка данных, оформление подписки и изменение DOM вручную) из функционального компонента ***после*** завершенного рендеринга. Он выполняет ту же роль, что и `componentDidMount`, `componentDidUpdate` и `componentWillUnmount` в React-классах, объединив их в единый API.
+
+`useEffect` принимает функцию, которая содержит императивный код, возможно, с эффектами.
+```javascript
+useEffect(() => {
+  // Применить эффект
+  return () => {
+    // Очистить эффект (опционально)
+  };
+}, []) // Зависимости для условного срабатывания эффекта (опционально)
+```
+[Подробнее](https://ru.reactjs.org/docs/hooks-effect.html)
 
 </details>
 
@@ -292,6 +315,17 @@ elem.addEventListener(event, callback, true)
 <details><summary>Что такое HOC</summary>
 
 **Компонент высшего порядка** (*Higher-Order Component*) — это функция, которая принимает компонент и возвращает новый компонент.
+
+[Подробнее](https://ru.reactjs.org/docs/higher-order-components.html)
+
+</details>
+
+<details><summary>Что такое Context</summary>
+
+**Context** позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.
+Контекст разработан для передачи данных, которые можно назвать «глобальными» для всего дерева React-компонентов (например, текущий аутентифицированный пользователь, UI-тема или выбранный язык).
+
+[Подробнее](https://ru.reactjs.org/docs/context.html)
 
 </details>
 
