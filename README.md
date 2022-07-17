@@ -304,7 +304,7 @@ const [state, setState] = useState(initialState)
 
 </details>
 
-<details><summary>Как работает хук useEffect и чем отличается от useLayoutEffect</summary>
+<details><summary>Как работает хук useEffect</summary>
 
 `useEffect` позволяет выполнять побочные эффекты (загрузка данных, оформление подписки, изменение DOM вручную и т.д.) из функционального компонента ***после*** завершенного рендеринга. Он выполняет ту же роль, что и `componentDidMount`, `componentDidUpdate` и `componentWillUnmount` в React-классах, объединив их в единый API.
 
@@ -344,9 +344,44 @@ useEffect(() => {
 
 <details><summary>Что такое мемоизация и как реализуется в React</summary>
 
+**Мемоизация** — это сохранение результатов выполнения функций для предотвращения повторных вычислений. 
+Это один из способов оптимизации, применяемый для увеличения скорости выполнения программ. 
+Перед вызовом функции проверяется, вызывалась ли функция ранее:
+
+- если не вызывалась, то функция вызывается, и результат её выполнения сохраняется;
+- если вызывалась, то используется сохранённый результат.
+
 </details>
 
-<details><summary>Как работают хуки useCallback, useMemo</summary>
+<details><summary>Как работает хук useCallback</summary>
+
+Хук `useCallback` возвращает ***мемоизированный колбэк***.
+```javascript
+const memoizedCallback = useCallback(() => doSomething(a, b), [a, b])
+```
+
+Хук `useCallback` получает встроенный колбэк и массив зависимостей и возвращает мемоизированную версию колбэка, который изменяется только если изменяются значения одной из зависимостей. 
+Это полезно при передаче колбэков оптимизированным дочерним компонентам, которые полагаются на равенство ссылок для предотвращения ненужных рендеров (например, `shouldComponentUpdate` или `React.memo()`).
+
+> `useCallback(fn, deps)` — это эквивалент `useMemo(() => fn, deps)`
+
+[Подробнее](https://ru.reactjs.org/docs/hooks-reference.html#usecallback)
+
+</details>
+
+<details><summary>Как работает хук useMemo</summary>
+
+Хук `useMemo` возвращает ***мемоизированное значение***.
+```javascript
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
+```
+
+Хук `useMemo` получает *создающую* функцию и массив зависимостей и будет повторно вычислять мемоизированное значение только тогда, когда значение какой-либо из зависимостей изменилось. 
+Эта оптимизация помогает избежать дорогостоящих вычислений при каждом рендере.
+
+> `useMemo(() => fn, deps)` — это эквивалент `useCallback(fn, deps)`
+
+[Подробнее](https://ru.reactjs.org/docs/hooks-reference.html#usememo)
 
 </details>
 
