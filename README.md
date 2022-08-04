@@ -280,6 +280,21 @@ const foo = (...props) => console.log(props)
 
 </details>
 
+<details><summary>Что такое Event Loop и как работает</summary>
+<br/>
+
+</details>
+
+<details><summary>Что такое Promise</summary>
+<br/>
+
+</details>
+
+<details><summary>Для чего нужны async/await</summary>
+<br/>
+
+</details>
+
 <details><summary>Как работает прототипное наследование</summary>
 <br/>
 
