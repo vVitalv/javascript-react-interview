@@ -49,6 +49,65 @@
 
 </details>
 
+<details><summary>Что такое Map, WeakMap</summary>
+<br/>
+
+1. **Объект `Map`** содержит *коллекцию* пар ключ-значение и запоминает исходный порядок вставки ключей. Главное отличие `Map` от `Object` в том, что `Map` позволяет использовать ключи любого типа. Объект `Map` - *итерируемый*.
+
+Обход элементов `Map`:
+```javascript
+// перебор по элементам ключ/значение
+for (let item of myMap) console.log(item)
+// перебор по ключам
+for (let item of myMap.keys()) console.log(item)
+// перебор по значениям
+for (let item of myMap.values()) console.log(item)
+// либо при помощи forEach
+myMap.forEach((value, key, map) => console.log(`${key}: ${value}`))
+```
+Преобразование из Object в Map:
+```javascript
+let myMap = new Map(Object.entries(myObj))
+```
+Преобразование Map в Object:
+```javascript
+let myObj = Object.fromEntries(myMap)
+```
+
+2. **Объект `WeakMap`** — это *коллекция* пар ключ-значение. В качестве ключей могут быть использованы ***только объекты***, а значения могут быть произвольных типов.
+Ссылки на ключи-объекты в `WeakMap` являются *слабыми*, то есть если на объект, хранимый в `WeakMap` нет ни одной внешней ссылки, то сборщик мусора удалит эту пару.
+Также это означает, что `WeakMap` не итерируем, так как нет возможности получить список текущих хранимых в `WeakMap` объектов. 
+
+</details>
+
+<details><summary>Что такое Set, WeakSet</summary>
+<br/>
+
+1. **Объекты `Set`** представляют *коллекции* значений, по которым можно выполнить обход в порядке вставки элементов. Значения всех элементов в Set ***уникальны***, то есть могут присутствовать только в одном экземпляре. Объект `Set` - *итерируемый*.
+
+Обход элементов `Set`:
+```javascript
+for (let item of mySet) console.log(item)
+// либо при помощи forEach
+mySet.forEach(value => console.log(value))
+```
+Преобразование из Array в Set:
+```javascript
+let mySet = new Set([1,2,3,4])
+```
+Преобразование Set в Array:
+```javascript
+let myArr = Array.from(mySet)
+// либо через rest оператор
+myArr2 = [...mySet]
+```
+
+2. **Объект `WeakSet`** - это *коллекция*, элементами которой могут быть ***только объекты***. Каждый объект может быть добавлен в `WeakSet` только один раз. 
+Ссылки на эти объекты в `WeakSet` являются *слабыми*, то есть если на объект, хранимый в `WeakSet` нет ни одной внешней ссылки, то сборщик мусора удалит этот объект.
+Также это означает, что `WeakSet` не итерируем, так как нет возможности получить список текущих хранимых в `WeakSet` объектов.   
+
+</details>
+
 <details><summary>Как можно клонировать объект</summary>
 <br/>
 
@@ -250,8 +309,6 @@ let func = new Function(str);
 func();
 ```
 
-[Подробнее](https://learn.javascript.ru/function-expressions#function-expression-v-sravnenii-s-function-declaration)
-
 </details> 
 
 <details><summary>Особенности стрелочных функций</summary>
@@ -317,18 +374,20 @@ const foo = (...props) => console.log(props)
 
 </details>
 
-<details><summary>Что такое Event Loop и как работает</summary>
-<br/>
-
-</details>
-
 <details><summary>Что такое Promise</summary>
 <br/>
+
+Promise – это специальный объект, который содержит своё состояние. Вначале pending («ожидание»), затем – одно из: fulfilled («выполнено успешно») или rejected («выполнено с ошибкой»).
 
 </details>
 
 <details><summary>Для чего нужны async/await</summary>
 <br/>
+
+<details><summary>Что такое Event Loop и как он работает</summary>
+<br/>
+
+</details>
 
 </details>
 
