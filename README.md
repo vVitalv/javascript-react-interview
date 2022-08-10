@@ -507,6 +507,15 @@ elem.addEventListener(event, callback, true)
 
 </details>
 
+<details><summary>Чем отличаются классы Component и PureComponent</summary>
+<br/>
+
+Отличие заключается в том, что `React.Component` не реализует метод `shouldComponentUpdate()`, а `React.PureComponent` реализует его поверхностным сравнением пропсов и состояния.
+
+Если метод `render()` React-компонента всегда рендерит одинаковый результат при одних и тех же пропсах и состояниях, для повышения производительности в некоторых случаях можно использовать `React.PureComponent`.
+
+</details>
+
 <details><summary>Как можно управлять состоянием компонентов</summary>
 <br/>
 
@@ -666,6 +675,8 @@ useEffect(() => {
 - если не вызывалась, то функция вызывается, и результат её выполнения сохраняется;
 - если вызывалась, то используется сохранённый результат.
 
+Для этого используются хуки `useCallback`, `useMemo` и метод `React.memo()`.
+
 </details>
 
 <details><summary>Как работает хук useCallback</summary>
@@ -699,6 +710,47 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
 > `useMemo(() => fn, deps)` — это эквивалент `useCallback(fn, deps)`
 
 [Подробнее](https://ru.reactjs.org/docs/hooks-reference.html#usememo)
+
+</details>
+
+<details><summary>Как работает метод React.memo()</summary>
+<br/>
+
+**`React.memo`** — это *компонент высшего порядка* (*HOC*), который сравнивает существующее и новое значение пропсов обернутого компонента, тем самым, решая, нужно ли перерендерить компонент.
+Метод используется для *мемоизации* компонентов при ***неменяющихся пропсах***. В этом случае React будет использовать результат последнего рендера, избегая повторного рендеринга.
+
+```javascript
+const MyComponent = React.memo(function MyComponent(props) {
+  /* рендер с использованием пропсов */
+})
+// либо
+function MyComponent(props) {
+  /* рендер с использованием пропсов */
+}
+export default React.memo(MyComponent)
+```
+
+`React.memo` затрагивает только изменения пропсов. Если функциональный компонент обёрнут в `React.memo` и использует `useState`, `useReducer` или `useContext`, он будет повторно рендериться при изменении *состояния* или *контекста*.
+
+По умолчанию он поверхностно сравнивает вложенные объекты в объекте `props`. Если нужно контролировать сравнение, то можно передать свою функцию сравнения в качестве второго аргумента.
+
+```javascript
+function MyComponent(props) {
+  /* рендер с использованием пропсов */
+}
+function areEqual(prevProps, nextProps) {
+  /*
+  возвращает true, если nextProps рендерит
+  тот же результат что и prevProps,
+  иначе возвращает false
+  */
+}
+export default React.memo(MyComponent, areEqual)
+```
+
+В отличие от метода `shouldComponentUpdate()` для классовых компонентов, функция `areEqual` возвращает `true`, если пропсы равны, и значение `false`, если пропсы не равны. Это обратные значения для `shouldComponentUpdate`.
+
+> `React.memo` является аналогом класса `React.PureComponent`, который реализует метод `shouldComponentUpdate()` в классовых компонентах.
 
 </details>
 
