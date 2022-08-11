@@ -524,8 +524,42 @@ elem.addEventListener(event, callback, true)
 
 #### React
 
-<details><summary>Какие методы жизненного цикла компонента в React</summary>
+<details><summary>Какие методы жизненного цикла компонента есть в React</summary>
 <br/>
+
+**Монтирование**
+  
+При создании экземпляра компонента и его вставке в DOM, следующие методы вызываются в установленном порядке:
+
+1. `constructor()`
+2. `static getDerivedStateFromProps()`
+3. `render()`
+4. `componentDidMount()`
+
+**Обновление**
+
+Обновление происходит при изменении *пропсов* или *состояния*. Следующие методы вызываются в установленном порядке при повторном рендере компонента:
+
+1. `static getDerivedStateFromProps()`
+2. `shouldComponentUpdate()`
+3. `render()`
+4. `getSnapshotBeforeUpdate()`
+5. `componentDidUpdate()`
+
+**Размонтирование**
+
+Этот метод вызывается при удалении компонента из DOM:
+
+1. `componentWillUnmount()`
+
+**Обработка ошибок**
+
+Следующие методы вызываются, если произошла ошибка в процессе рендеринга, методе жизненного цикла или конструкторе любого дочернего компонента:
+
+1. `static getDerivedStateFromError()`
+2. `componentDidCatch()`
+
+[Подробнее](https://ru.reactjs.org/docs/react-component.html#the-component-lifecycle)
 
 </details>
 
@@ -538,8 +572,26 @@ elem.addEventListener(event, callback, true)
 
 </details>
 
-<details><summary>Как можно управлять состоянием компонентов</summary>
+<details><summary>Как можно передавать состояние компонентов</summary>
 <br/>
+
+1. Через `props`
+2. [Context API](https://ru.reactjs.org/docs/context.html)
+3. Использовать стейт-менеджер, например, Redux, MobX, Effector
+
+</details>
+
+<details><summary>Как можно изменять состояние родительского компонента без использования стейт-менеджеров</summary>
+<br/>
+
+Передать в дочерний компонент функцию изменения состояния:
+
+```javascript
+function ParentComponent() {
+  const [state, setState] = useState()
+  return <ChildComponent setParentState={setState} />
+}
+```
 
 </details>
 
