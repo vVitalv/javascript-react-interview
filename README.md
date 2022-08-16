@@ -128,6 +128,11 @@ const cloneObj = {...originObj}
 const cloneObj = JSON.parse(JSON.stringify(originObj))
 ```
 
+`JSON` является независимой от языка спецификацией для данных, поэтому `JSON.stringify` пропускает некоторые специфические свойства объектов JavaScript, а именно:
+- Свойства-функции (методы)
+- Символьные ключи и значения
+- Свойства, содержащие `undefined`
+
 </details>
 
 <details><summary>Как проверить, является ли объект массивом</summary>
