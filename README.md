@@ -59,13 +59,13 @@
 
 Обход элементов `Map`:
 ```javascript
-// перебор по элементам ключ/значение
+// перебор по элементам ключ/значение:
 for (let item of myMap) console.log(item)
-// перебор по ключам
+// перебор по ключам:
 for (let item of myMap.keys()) console.log(item)
-// перебор по значениям
+// перебор по значениям:
 for (let item of myMap.values()) console.log(item)
-// либо при помощи forEach
+// либо при помощи forEach:
 myMap.forEach((value, key, map) => console.log(`${key}: ${value}`))
 ```
 Преобразование из Object в Map:
@@ -91,7 +91,7 @@ let myObj = Object.fromEntries(myMap)
 Обход элементов `Set`:
 ```javascript
 for (let item of mySet) console.log(item)
-// либо при помощи forEach
+// либо при помощи forEach:
 mySet.forEach(value => console.log(value))
 ```
 Преобразование из Array в Set:
@@ -101,7 +101,7 @@ let mySet = new Set([1,2,3,4])
 Преобразование Set в Array:
 ```javascript
 let myArr = Array.from(mySet)
-// либо через rest оператор
+// либо с помощью spread оператора:
 myArr2 = [...mySet]
 ```
 
