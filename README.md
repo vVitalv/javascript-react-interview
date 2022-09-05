@@ -244,8 +244,9 @@ const cloneObj = JSON.parse(JSON.stringify(originObj))
 <details><summary>Как использовать глобальные переменные в модульной архитектуре</summary>
 <br/>
 
-1. С помощью *DefinePlugin* для webpack
-2. Объявлять *переменные окружения* (*Environment Variables*) в файле `.env`
+1. С помощью Context API
+2. С помощью *DefinePlugin* для webpack
+3. Объявлять *переменные окружения* (*Environment Variables*) в файле `.env`
 
 </details>
 
